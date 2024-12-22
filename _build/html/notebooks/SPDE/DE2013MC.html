@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; myresearch 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=a66d8bb5" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=ceb74428" />
+    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="An ALE ESFEM for solving PDEs on evolving surfaces" href="ES2012MJM.html" />
+    <link rel="prev" title="Welcome to myresearch’s documentation!" href="../../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">myresearch</a></h1>
+
+
+
+<p class="blurb">A light, configurable Sphinx theme</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=sphinx-doc&repo=alabaster&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ES2012MJM.html">An ALE ESFEM for solving PDEs on evolving surfaces</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../../index.html" title="previous chapter">Welcome to myresearch’s documentation!</a></li>
+      <li>Next: <a href="ES2012MJM.html" title="next chapter">An ALE ESFEM for solving PDEs on evolving surfaces</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <dl>
+<dt>{</dt><dd><dl>
+<dt>“cells”: [</dt><dd><dl>
+<dt>{</dt><dd><p>“attachments”: {},
+“cell_type”: “markdown”,
+“metadata”: {},
+“source”: [</p>
+<blockquote>
+<div><p>“# L2-estimates for the evolving surface finite element methodn”,
+“n”,
+“* Authors: Dziuk &amp; Elliottn”,
+“n”,
+“## Main contributionn”,
+“* optimal and uniform in time $L^2$ bound for linear fem for advection and diffusion equation on a moving surfacen”,
+“n”,
+“## Main Existing resultsn”,
+“* $H^1$ optimal error in [9], $L^\infty L^2$ and $L^2H^1$ in $\mathcal{O}(h)$.n”,
+“\begin{align}n”,
+“\sup _{t \in(0, T)}\left\|u(\cdot, t)-u_h(\cdot, t)\right\|_{L^2(\Gamma(t))}^2+\int_0^T\left\|\nabla_{\Gamma}\left(u(\cdot, t)-u_h(\cdot, t)\right)\right\|_{L^2(\Gamma(t))}^2 d t \leq c h^2n”,
+“\end{align}n”,
+“&lt;!– * Compared with bulk equation in one dimensional higher –&gt;n”</p>
+</div></blockquote>
+<p>]</p>
+</dd>
+</dl>
+<p>},
+{</p>
+<blockquote>
+<div><p>“attachments”: {},
+“cell_type”: “markdown”,
+“metadata”: {},
+“source”: [</p>
+<blockquote>
+<div><p>“n”,
+“## Methodn”,
+“* Weak solutionn”,
+“\begin{align}n”,
+“\int_{\Gamma(t)} \partial^{\bullet} u \varphi+\int_{\Gamma(t)} u \varphi \nabla_{\Gamma} \cdot v+\int_{\Gamma(t)} \mathcal{A} \nabla_{\Gamma} u \cdot \nabla_{\Gamma} \varphi=0n”,
+“\end{align}n”,
+“for $\varphi(\cdot, t) \in H^1(\Gamma(t))$n”,
+“where $\mathcal{A}$ is positive definite on the tangential spacen”,
+“\begin{align}n”,
+“\mathcal{A} \xi \cdot \xi \geq c_0|\xi|^2 \quad \forall \xi \in \mathbb{R}^{n+1}, \xi \cdot \nu=0n”,
+“\end{align}n”,
+“* For initial data $u(0)\in H^1$, and $v\in W^{1,\infty}(\mathcal{G}_T)$, the existence and uniqueness of the above weak solution is proved in DE2007IJNA following the Galerkin method. Precisely, proving the bounededness of $u_N$ in $H^1$ and taking the weak convergence subsequence.n”,
+“* Stability: For initial data $u(0)\in H^1$, velocity $v\in C^1(\mathcal{G}_T)$n”,
+“\begin{align}n”,
+“\begin{aligned}n”,
+“&amp; \sup _{(0, T)}\|u\|_{L^2(\Gamma)}^2+\int_0^T\left\|\nabla_{\Gamma} u\right\|_{L^2(\Gamma)}^2 \leq c\left(\mathcal{A}, v, \mathcal{G}_T, T\right)\left\|u_0\right\|_{L^2(\Gamma(0))}^2 \\n”,
+“&amp; \int_0^T\left\|\partial^{\bullet} u\right\|_{L^2(\Gamma)}^2+\sup _{(0, T)}\left\|\nabla_{\Gamma} u\right\|_{L^2(\Gamma)}^2 \leq c\left(\mathcal{A}, v, \mathcal{G}_T, T\right)\left\|u_0\right\|_{H^1(\Gamma(0))}^2 \\n”,
+“\end{aligned}n”,
+“\end{align}n”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“attachments”: {},
+“cell_type”: “markdown”,
+“metadata”: {},
+“source”: [</p>
+<blockquote>
+<div><p>“* Scheme by setting the material derivative onto the test function (Evolving Surface Finite Element Method). n”,
+“n”,
+“Given $U_{h 0} \in S_h(0)$ find $U_h \in S_h^T=\left\{\phi_h\right.$ and $\left.\partial_h^{\circ} \phi_h \in C^0\left(\mathcal{G}_T^h\right) \mid \phi_h(\cdot, t) \in S_h(t),\ t \in[0, T]\right\}$ such that for all $\phi_h \in S_h^T$ and $t \in(0, T]$n”,
+“$$n”,
+“\frac{d}{d t} m_h\left(U_h, \phi_h\right)+a_h\left(U_h, \phi_h\right)=m_h\left(U_h, \partial_h^{\circ} \phi_h\right), \quad U_h(\cdot, 0)=U_{h 0}n”,
+“$$n”,
+“Using the transport property of basis function, it follows that this definition is equivalent to:n”,
+“$$n”,
+“\frac{d}{d t} m_h\left(U_h, \chi_j\right)+a_h\left(U_h, \chi_j\right)=0 \quad U_h(\cdot, 0)=U_{h 0}n”,
+“$$n”,
+“for all $j=1, \ldots, N$.n”,
+“n”,
+“\begin{align}n”,
+“&amp; a_h\left(\phi_h, W_h\right)=\int_{\Gamma_h} \mathcal{A}^{-l} \nabla_{\Gamma_h} \phi_h \cdot \nabla_{\Gamma_h} W_h, \\n”,
+“&amp; m_h\left(\phi_h, W_h\right)=\int_{\Gamma_h} \phi_h W_h,n”,
+“\end{align}n”,
+“n”,
+“Finite element scheme does not explicitly involve the velocity of the surface, but relies on the poisition of surface at t.n”,
+“n”,
+“Then error will be estimated comparing n”,
+“\begin{align}n”,
+“\frac{d}{d t} \int_{\Gamma(t)} u \varphi+\int_{\Gamma(t)} \mathcal{A} \nabla_{\Gamma} u \cdot \nabla_{\Gamma} \varphi=\int_{\Gamma(t)} u \partial^{\bullet} \varphin”,
+“\end{align}n”,
+“n”,
+“Compared with DE2007IJNA, the main difference is the reformulation of the scheme such that the velocity is not explictly involved.”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“attachments”: {},
+“cell_type”: “markdown”,
+“metadata”: {},
+“source”: [</p>
+<blockquote>
+<div><p>“There are two key points:n”,
+“* To compare the numerical solution with the Ritz projeciton, so as to split the errorn”,
+“* material derivative of error of Ritz projection, by defining a lifted velocity on $\Gamma$ via lifted trajectory n”,
+“n”,
+“Definition 4.3. We define a material velocity for $x=X(t)$ on the surface $\Gamma_h(t)$ byn”,
+“(4.5) $\dot{X}(t)=V_h(X(t), t), V_h(x, t):=\sum_{j=1}^N \dot{X}_j(t) \chi_j(x, t)$ for $x \in S_h(t)$, and the associated material velocity on $\Gamma(t)$ byn”,
+“(4.6) $\quad \dot{Y}(t)=v_h(Y(t), t)=\frac{\partial p}{\partial t}(X(t), t)+V_h(X(t), t) \cdot \nabla p(X(t), t)$n”,
+“so that for $x \in \Gamma_h(t)$,n”,
+“(4.7) $\quad v_h(p(x, t), t)=(P-d \mathcal{H})(x, t) V_h(x, t)-d_t(x, t) \nu(x, t)-d(x, t) \nu_t(x, t)$,n”,
+“where $Y(t)=p(X(t), t)$ is defined by $(2.2)$.n”,
+“n”,
+“### Benefit of Ritz Projectionn”,
+“* Help to reduce the consistency error”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+{</p>
+<blockquote>
+<div><p>“attachments”: {},
+“cell_type”: “markdown”,
+“metadata”: {},
+“source”: [</p>
+<blockquote>
+<div><p>“[9]: DE2007IJMA: introducing ESFEM for diffusion and transport on surfacen”</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>],
+“metadata”: {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>“language_info”: {</dt><dd><p>“name”: “python”</p>
+</dd>
+</dl>
+<p>},
+“orig_nbformat”: 4</p>
+</div></blockquote>
+<p>},
+“nbformat”: 4,
+“nbformat_minor”: 2</p>
+</dd>
+</dl>
+<p>}</p>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &#169;2024, jiash.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.3.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="../../_sources/notebooks/SPDE/DE2013MC.ipynb.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/sphinx-doc/alabaster" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
