@@ -3,26 +3,35 @@ name: Build and deploy docs
 on:
   push:
     branches:
-      - main
+      - main  # 触发工作流的分支（可以是 'main' 或者 'master'）
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # 使用最新版本的 Ubuntu
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-      - name: Build docs
-        run: |
-          sphinx-build -b html sourcedir _build/html
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _build/html
+    # 1. 检出代码
+    - uses: actions/checkout@v2
+
+    # 2. 设置 Python 环境
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # 安装 Python 3.x 版本（可以根据需要调整）
+
+    # 3. 安装依赖项
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # 安装 requirements.txt 中列出的依赖项
+
+    # 4. 构建 Sphinx 文档
+    - name: Build docs
+      run: |
+        sphinx-build -b html sourcedir _build/html  # 使用 Sphinx 构建 HTML 文档
+
+    # 5. 部署到 GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3  # 使用 peaceiris 的 actions-gh-pages 动作部署到 GitHub Pages
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 提供的 token 进行授权
+        publish_dir: _build/html  # 部署目录是 _build/html
